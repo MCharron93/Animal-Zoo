@@ -7,6 +7,8 @@ import Frog from "./models/Frog.js"
 import Giraffe from "./models/Giraffe.js"
 import Hawk from "./models/Hawk.js"
 
+import Zoo from "./models/zoo.js"
+
 // import Zoo from './models/zoo.js'
 
 
@@ -34,10 +36,43 @@ greg.eat("leaves")
 let horris = new Hawk("Horris", "Multi", "Male", 3, "25lbs", true)
 horris.eat("mice")
 
+let animals = [batsy, cappy, ellie, finn, greg]
+let predators = [gator, diago, horris]
 
-// let animals = [gator]
+let zoo = new Zoo()
+zoo.addAnimals(animals)
+zoo.addPredators(predators)
 
-// function drawAnimals(){
-//   let template = ""
+function drawAnimals(){
+  let template = ""
+
+  zoo.animals.forEach(animal => template += /*html*/ `
+  <div class="col-6">
+  <h1>${animal.name}</h1>
+  <h4>Color: ${animal.color}</h4>
+  <h4>Age: ${animal.age}</h4>
+  <h4>Weight: ${animal.weight}</h4>
+  </div>
+  `)
   
-// }
+  document.querySelector('#animals').innerHTML = template
+}
+
+drawAnimals()
+
+function drawPredators(){
+  let template = ""
+
+  zoo.predators.forEach(animal => template += /*html*/ `
+  <div class="col-4">
+  <h1>${animal.name}</h1>
+  <h4>Color: ${animal.color}</h4>
+  <h4>Age: ${animal.age}</h4>
+  <h4>Weight: ${animal.weight}</h4>
+  </div>
+  `)
+
+  document.querySelector("#predators").innerHTML = template
+}
+
+drawPredators()
