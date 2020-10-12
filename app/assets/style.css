@@ -1,4 +1,4 @@
 body { min-height: 100vh; display: flex; flex-direction: column; }
-header{ } 
+header{height: 7vh; } 
 main{flex-grow: 1;} 
-footer{ }
+footer{ height: 7vh;}
