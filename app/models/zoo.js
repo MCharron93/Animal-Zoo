@@ -10,9 +10,16 @@ export default class Zoo {
       this.predators.push(animal)
     });
   }
-  
+
+  hasTail(animalArr){
+    animalArr.forEach(animal => {
+      this.tail.push(animal)
+    });
+  }
+
   constructor(){
     this.animals = []
     this.predators = []
+    this.tail = []
   }
 }

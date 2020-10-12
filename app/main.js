@@ -38,10 +38,25 @@ let horris = new Hawk("Horris", "Multi", "Male", 3, "25lbs", true)
 
 let animals = [batsy, cappy, ellie, finn, greg]
 let predators = [gator, diago, horris]
+let tails = [gator, batsy, cappy, diago, ellie, greg, horris]
 
 let zoo = new Zoo()
 zoo.addAnimals(animals)
 zoo.addPredators(predators)
+zoo.hasTail(tails)
+
+function doesHaveTail(){
+  let template = ""
+
+  zoo.tail.forEach(animal => template += /*html*/ `
+  <div class="col-4 card">
+  <h1>${animal.name}</h1>
+  <h4>Has Tail: ${animal.tail}</h4>
+  </div>
+  `)
+  
+  document.querySelector('#tailed').innerHTML = template
+}
 
 function drawAnimals(){
   let template = ""
@@ -58,11 +73,9 @@ function drawAnimals(){
   document.querySelector('#animals').innerHTML = template
 }
 
-drawAnimals()
-
 function drawPredators(){
   let template = ""
-
+  
   zoo.predators.forEach(animal => template += /*html*/ `
   <div class="col-4 card">
   <h1>${animal.name}</h1>
@@ -72,8 +85,10 @@ function drawPredators(){
   <button id="food" onclick="feed()">Feed</button>
   </div>
   `)
-
+  
   document.querySelector("#predators").innerHTML = template
 }
 
+doesHaveTail()
+drawAnimals()
 drawPredators()
